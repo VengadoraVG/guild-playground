@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Killer : MonoBehaviour {
     void OnTriggerEnter (Collider c) {
-        Debug.Log("x__x" + Time.time);
-        // Destroy(c.gameObject);
+        Util.GetGameController().TriggerGameOver(this);
     }
 }

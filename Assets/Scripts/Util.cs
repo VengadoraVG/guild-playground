@@ -8,4 +8,9 @@ public class Util {
                            Mathf.Round(floatyVector.y),
                            Mathf.Round(floatyVector.z));
     }
+
+    public static GameController GetGameController () {
+        return GameObject.FindWithTag("GameController")
+            .GetComponent<GameController>();
+    }
 }

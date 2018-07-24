@@ -13,6 +13,6 @@ public class Platform : MonoBehaviour {
     }
 
     public void UpdateSize () {
-        size = target.transform.localScale = Util.Round(size / 0.5f) * 0.5f;
+        size = target.transform.localScale = Util.Round(size / 1) * 1;
     }
 }

@@ -12,11 +12,15 @@ public class PlayerControl : MonoBehaviour {
     private float _airTime;
     private Vector3 _direction;
     private float _analogicSensitivity;
+    private ColliderDetector _floorDetector;
+    private bool _jumpButtonReleased = true;
 
     void Start () {
         _pointOfView = GameObject.FindWithTag("Camera").
             transform.Find("point of view");
         _body = GetComponent<Rigidbody>();
+        _floorDetector = transform.Find("floor detector")
+            .GetComponent<ColliderDetector>();
     }
 
     void FixedUpdate () {
@@ -35,9 +39,17 @@ public class PlayerControl : MonoBehaviour {
             transform.forward = _direction;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            _body.velocity += new Vector3(0, _jumpSpeed, 0);
+        if (Input.GetKey(KeyCode.Space) && Mathf.Abs(_body.velocity.y) < 0.1f &&
+            _floorDetector.detected && _jumpButtonReleased) {
+            _body.velocity = new Vector3(0, _jumpSpeed, 0) +
+                Vector3.Scale(new Vector3(1,0,1), _body.velocity);
+            _jumpButtonReleased = false;
         }
+
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            _jumpButtonReleased = true;
+        }
+        _body.velocity = Vector3.Scale(new Vector3(0, 1, 0), _body.velocity);
     }
 
     public void UpdateSpeeds () {

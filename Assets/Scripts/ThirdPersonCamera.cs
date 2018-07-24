@@ -13,6 +13,7 @@ public class ThirdPersonCamera : MonoBehaviour {
             target = GameObject.FindWithTag("Player");
         }
         pitch = transform.Find("pitch").gameObject;
+        transform.rotation = target.transform.rotation;
     }
 
     void Update () {
