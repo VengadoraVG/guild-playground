@@ -25,6 +25,7 @@ ModelImporter:
     4300000: Cube
     7400000: Armature|Idle
     7400002: Armature|Spawn
+    7400004: Armature|Dead
     9500000: //RootNode
     13700000: Cube
   externalObjects: {}

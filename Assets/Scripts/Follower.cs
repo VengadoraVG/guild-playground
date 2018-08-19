@@ -11,7 +11,7 @@ public class Follower : MonoBehaviour {
     void Start () {
         _enemy = transform.parent.GetComponent<Enemy>();
     }
-
+    
     /* mientras el jugador esté dentro de la esfera:
        - el comportamiento Enemy debería apagarse. 
          el método TurnEnemyBehaviourOff() hace esto ;)
